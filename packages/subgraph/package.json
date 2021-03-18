@@ -1,20 +1,34 @@
 {
-  "name": "@scaffold-eth/subgraph",
-  "license": "UNLICENSED",
-  "version": "1.0.0",
+  "name": "honey-pot",
+  "version": "0.1.0",
   "scripts": {
-    "codegen": "graph codegen",
-    "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ GITHUB_USERNAME/your-contract",
-    "create-local": "graph create --node http://localhost:8020/ scaffold-eth/your-contract",
-    "remove-local": "graph remove --node http://localhost:8020/ scaffold-eth/your-contract",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 scaffold-eth/your-contract"
-  },
-  "dependencies": {
-    "@graphprotocol/graph-cli": "0.18.0",
-    "@graphprotocol/graph-ts": "0.18.0"
+    "build": "./scripts/build-graph.sh",
+    "build:rinkeby": "NETWORK=rinkeby yarn build",
+    "build:mainnet": "NETWORK=mainnet yarn build",
+    "build:xdai": "NETWORK=xdai yarn build",
+    "codegen": "./scripts/codegen.sh",
+    "codegen:rinkeby": "NETWORK=rinkeby yarn codegen",
+    "codegen:mainnet": "NETWORK=mainnet yarn codegen",
+    "codegen:xdai": "NETWORK=xdai yarn codegen",
+    "deploy": "./scripts/deploy.sh",
+    "deploy:rinkeby": "NETWORK=rinkeby yarn deploy",
+    "deploy:mainnet": "NETWORK=mainnet yarn deploy",
+    "deploy:xdai": "NETWORK=xdai yarn deploy",
+    "manifest": "./scripts/build-manifest.sh",
+    "manifest:rinkeby": "NETWORK=rinkeby yarn manifest",
+    "manifest:mainnet": "NETWORK=mainnet yarn manifest",
+    "manifest:xdai": "NETWORK=xdai yarn manifest"
   },
   "devDependencies": {
-    "mustache": "^3.1.0"
+    "@graphprotocol/graph-cli": "^0.18.0",
+    "@graphprotocol/graph-ts": "^0.18.0",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "eslint": "^7.9.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "mustache": "^4.0.1"
   }
 }
