@@ -156,6 +156,33 @@ const config: HardhatUserConfig = {
       },
     },
   },
+  solidity: {
+    compilers: [
+      {
+        version: "0.7.6",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+      {
+        version: "0.6.7",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+    ],
+  },
+  etherscan: {
+    // Your API key for Etherscan
+    // Obtain one at https://etherscan.io/
+    apiKey: "PSW8C433Q667DVEX5BCRMGNAH9FSGFZ7Q8",
+  },
 };
 
 const DEBUG = false;
@@ -236,7 +263,7 @@ task("generate", "Create a mnemonic for builder deploys", async (_, { ethers }) 
   fs.writeFileSync("./mnemonic.txt", mnemonic.toString());
 });
 
-task("mine", "Looks for a deployer account that will give leading zeros")
+task("mineContractAddress", "Looks for a deployer account that will give leading zeros")
   .addParam("searchFor", "String to search for")
   .setAction(async (taskArgs, { network, ethers }) => {
     let contract_address = "";

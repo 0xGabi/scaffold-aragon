@@ -80,8 +80,7 @@ const deploy = async (contractName, _args = [], overrides = {}, libraries = {}) 
     " 📄",
     chalk.cyan(contractName),
     "deployed to:",
-    chalk.magenta(deployed.address),
-    chalk.grey(extraGasInfo)
+    chalk.magenta(deployed.address)
   );
   console.log(" ⛽", chalk.grey(extraGasInfo));
 
